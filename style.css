@@ -1,5 +1,5 @@
 /* =============================== */
-/*         THEME VARIABLES         */
+/* THEME VARIABLES         */
 /* =============================== */
 :root {
   --main: #a81e33; /* Main accent color */
@@ -9,7 +9,7 @@
 }
 
 /* =============================== */
-/*        LAYOUT CONTAINERS        */
+/* LAYOUT CONTAINERS        */
 /* =============================== */
 html,
 body {
@@ -62,7 +62,7 @@ body {
 }
 
 /* =============================== */
-/*         ICON & TOOLTIP          */
+/* ICON & TOOLTIP          */
 /* =============================== */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 24;
@@ -74,7 +74,7 @@ body {
 }
 
 /* =============================== */
-/*         BUTTON STYLES           */
+/* BUTTON STYLES           */
 /* =============================== */
 /* Square icon button (nav, search, etc) */
 .button-icon-square {
@@ -108,7 +108,7 @@ body {
   border: none;
   cursor: pointer;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease;
+  transition: all 0.2s ease 0.2s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +119,7 @@ body {
 .icon-button:hover {
   background-color: var(--main);
   color: white;
-  transform: translateY(-12px);
+  transform: translateY(-2px);
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
 }
 .icon-button .label {
@@ -155,7 +155,7 @@ body {
 }
 
 /* =============================== */
-/*      SCROLLABLE BUTTON GROUP    */
+/* SCROLLABLE BUTTON GROUP    */
 /* =============================== */
 .scrollable-btn-container {
   width: 100%;
@@ -197,7 +197,7 @@ body {
 }
 
 /* =============================== */
-/*         BOTTOM BAR STYLES       */
+/* BOTTOM BAR STYLES       */
 /* =============================== */
 .bottom-bar {
   padding: 0.5rem 1rem;
@@ -244,7 +244,7 @@ body {
 }
 
 /* =============================== */
-/*   GRAND TOTAL & PAYMENT BUTTONS */
+/* GRAND TOTAL & PAYMENT BUTTONS */
 /* =============================== */
 .grand-total-section {
   display: flex;
@@ -324,23 +324,46 @@ body {
 }
 
 /* =============================== */
-/*         KEYPAD STYLES           */
+/* KEYPAD STYLES           */
 /* =============================== */
-.keypad-number-buttons {
-  border-radius: 16px;
+#keypad-display {
+  text-align: right;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Google Sans Code", sans-serif;
+  color: #333;
+}
+#keypad-backspace-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dimgray);
+}
+#keypad-backspace-button:hover {
+  background-color: var(--whitesmoke);
+  color: var(--main);
 }
 
-.keypad-number-buttons div button {
+.keypad-number-buttons .col {
+  padding: 4px;
+}
+
+.keypad-number-buttons .btn {
+  width: 100%;
+  height: 60px;
   background-color: var(--lightwhite);
-  border-radius: 16px;
+  border-radius: 12px;
   font-family: "Google Sans Code", sans-serif;
   color: var(--main);
   text-align: center;
   font-size: 2em;
   font-weight: 800;
+  border: 1px solid #eee;
+  transition: all 0.1s ease-in-out;
 }
 
-.keypad-number-buttons div button:hover {
+.keypad-number-buttons .btn:hover {
   background-color: var(--main);
   color: var(--lightwhite);
+  transform: scale(1.05);
 }
