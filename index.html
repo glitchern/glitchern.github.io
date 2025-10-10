@@ -1,4 +1,615 @@
 <!DOCTYPE html>
-<html>
-	
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cash Register Layout</title>
+    <!-- Google Material Symbols CDN -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <!-- Bootstrap 5 CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --main: #a81e33;
+        --lightwhite: #ffffff;
+        --dimgray: #696969;
+        --whitesmoke: #f5f5f5;
+      }
+
+      /* --- Screen Layout CSS --- */
+      html, body {
+        height: 100%;
+        overflow: hidden; /* Prevent body from scrolling */
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .screen {
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Full viewport height */
+        background-color: #e9ecef;
+      }
+
+      .screen > nav {
+        flex-shrink: 0; /* Prevent nav from shrinking */
+        padding: 10px 20px;
+        background-color: var(--lightwhite);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      /* MODIFIED: This is now the scrollable content area */
+      .main-content-scrollable {
+        flex-grow: 1;  /* Allow main to fill available space */
+        overflow-y: auto; /* Allow main content to scroll independently */
+        padding: 16px;
+      }
+
+      /* NEW: Wrapper for the sticky bottom bar */
+      .bottom-bar-sticky {
+          flex-shrink: 0;
+          padding: 0 16px 16px 16px; /* Padding to match the main content */
+      }
+
+      .screen > footer {
+        flex-shrink: 0; /* Prevent footer from shrinking */
+        z-index: 10;
+      }
+
+      .main-content-scrollable .section-reg {
+          background: var(--lightwhite);
+          padding: 1rem;
+          border-radius: 8px;
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+          height: 100%;
+      }
+
+      .bottom-bar-sticky .section-reg {
+        background: var(--lightwhite);
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 24;
+      }
+
+      .retailz-tooltip {
+        --bs-tooltip-bg: var(--main);
+        --bs-tooltip-color: var(--lightwhite);
+      }
+
+      /* --- COMPONENT STYLES --- */
+      .button-icon-square {
+        margin: 6px;
+        width: 48px;
+        height: 48px;
+        background-color: var(--whitesmoke);
+        color: var(--main);
+        border: none;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+      }
+      .button-icon-square:hover {
+        background-color: var(--main);
+        color: white;
+        transform: translateY(-2px);
+      }
+      .button-icon-square .material-symbols-outlined { font-size: 2em; }
+
+      .icon-button {
+        background-color: var(--lightwhite);
+        color: var(--main);
+        border: none;
+        cursor: pointer;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", sans-serif;
+        text-align: center;
+        margin: 6px;
+      }
+      .icon-button:hover {
+        background-color: var(--main);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .icon-button .label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1;
+      }
+      .icon-button-vertical {
+        flex-direction: column;
+        width: 80px;
+        height: 70px;
+        border-radius: 12px;
+        padding: 8px;
+      }
+      .icon-button-vertical .material-symbols-outlined {
+        font-size: 2.2em;
+        margin-bottom: 4px;
+      }
+      .icon-button-horizontal {
+        flex-direction: row;
+        width: auto;
+        height: 64px;
+        border-radius: 32px;
+        padding: 0 20px;
+        gap: 8px;
+      }
+      .icon-button-horizontal .material-symbols-outlined { font-size: 2.4em; }
+
+      .scrollable-btn-container {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+      .scrollable-btn-container::-webkit-scrollbar { height: 6px; }
+      .scrollable-btn-container::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+      .scrollable-btn-container .btn-group { flex-wrap: nowrap; }
+
+      .btn-outline-custom-radio {
+        background-color: var(--dimgray);
+        color: var(--whitesmoke);
+        border-color: var(--dimgray);
+        transition: all .15s ease-in-out;
+      }
+      .btn.btn-outline-custom-radio:hover {
+        background-color: var(--lightwhite);
+        color: var(--main);
+        border-color: var(--main);
+      }
+      .btn-check:checked+.btn-outline-custom-radio,
+      .btn-outline-custom-radio.active {
+        background-color: var(--main);
+        color: var(--lightwhite);
+        border-color: var(--main);
+        box-shadow: none;
+      }
+      .btn-check:focus+.btn-outline-custom-radio {
+        box-shadow: 0 0 0 0.25rem rgba(168, 30, 51, 0.5);
+      }
+
+      /* --- UPDATED: Bottom Bar Styles --- */
+      .bottom-bar {
+        padding: 0.5rem 1rem;
+      }
+      .item-count-box {
+        background-color: var(--whitesmoke);
+        border-radius: 8px;
+        padding: 0.5rem;
+        aspect-ratio: 1 / 1;
+        min-width: 70px; /* Reduced size */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .item-count-number {
+        font-size: 2.2rem; /* Reduced size */
+        font-weight: 700;
+        line-height: 1;
+        color: var(--main);
+      }
+      .item-count-label {
+        font-size: 0.7rem; /* Reduced size */
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .totals-grid {
+        display: grid;
+        grid-template-columns: auto min-content 1fr;
+        gap: 2px 10px; /* Reduced gap */
+        font-size: 1rem; /* Reduced size */
+        font-weight: 500;
+        padding: 0.5rem 0;
+      }
+      .totals-grid .amount {
+        text-align: right;
+        font-weight: 700;
+      }
+
+      /* --- UPDATED: Grand Total & Payment Button Styles --- */
+      .grand-total-section {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        background-color: var(--main);
+        color: var(--lightwhite);
+        border: 2px solid var(--main);
+      }
+      .grand-total-section:hover {
+        background-color: var(--lightwhite);
+        color: var(--main);
+        border: 2px solid var(--main);
+      }
+      .grand-total-label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: #f0f0f0;
+      }
+      .grand-total-section:hover .grand-total-label {
+        color: #6c757d;
+      }
+      .grand-total-amount {
+        font-size: 2.3rem;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .checkout-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .payment-buttons-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+      .cash-denominations {
+        display: flex;
+        gap: 6px;
+      }
+      .cash-button {
+        background-color: var(--whitesmoke);
+        border: 1px solid #ddd;
+        width: 50px;
+        height: 50px;
+        font-weight: 600;
+        color: #333;
+        transition: all 0.2s ease;
+      }
+      .cash-button:hover {
+        background-color: #ddd;
+        border-color: #ccc;
+        transform: translateY(-2px);
+      }
+      .exact-cash-button {
+        background-color: var(--dimgray);
+        color: var(--whitesmoke);
+        font-weight: 600;
+        height: 70px;
+        padding: 0 20px;
+        border: none;
+        transition: all 0.2s ease;
+      }
+      .exact-cash-button:hover {
+          background-color: #555;
+          color: var(--whitesmoke);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen" id="cash-register">
+      <nav>
+        <!-- Nav content stays the same -->
+        <div>
+          <button
+            type="button"
+            class="btn button-icon-square"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Dashboard"
+          >
+            <span class="material-symbols-outlined">dashboard</span>
+          </button>
+          <button
+            type="button"
+            class="btn button-icon-square"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Select a customer"
+          >
+            <span class="material-symbols-outlined">diversity_1</span>
+          </button>
+          <button
+            type="button"
+            class="btn button-icon-square"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Change cashier"
+          >
+            <span class="material-symbols-outlined">partner_exchange</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- RESTRUCTURED: Main content now has a three-column layout -->
+      <div class="main-content-scrollable">
+        <div class="row h-100">
+          <!-- Column 1: Item List -->
+          <div class="col-lg-5 mb-3 mb-lg-0">
+            <div class="section-reg item-list">
+              <div class="search-field row g-3 align-items-center mb-3">
+                <div class="col-sm-6 col-md-4">
+                  <input class="form-control" type="text" placeholder="UPC" />
+                </div>
+                <div class="col-sm-6 col-md-4">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Item Name/SKU"
+                  />
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn button-icon-square"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    data-bs-custom-class="retailz-tooltip"
+                    data-bs-title="Quick Keys"
+                  >
+                    <span class="material-symbols-outlined">build</span>
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn button-icon-square"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    data-bs-custom-class="retailz-tooltip"
+                    data-bs-title="E-Commerce"
+                  >
+                    <span class="material-symbols-outlined">payments</span>
+                  </button>
+                </div>
+              </div>
+              <p>Item list area...</p>
+            </div>
+          </div>
+
+          <!-- Column 2: Pinned Groups -->
+          <div class="col-lg-4 mb-3 mb-lg-0">
+            <div class="section-reg pinned-groups">
+              <h5>Pinned Groups</h5>
+              <div class="group-pins-scrollable scrollable-btn-container">
+                <div class="btn-group" role="group">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio1"
+                    autocomplete="off"
+                    checked
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio1"
+                    >Department</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio2"
+                    >Lottery</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio3"
+                    >Grocery</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio4"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio4"
+                    >Liquor</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio5"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio5"
+                    >Tobacco</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio6"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio6"
+                    >Misc</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Keypad -->
+          <div class="col-lg-3 mb-3 mb-lg-0">
+            <div class="section-reg keypad">
+              <h5>Keypad</h5>
+              <p>Keypad area...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sticky Bottom Bar Wrapper -->
+      <div class="bottom-bar-sticky">
+        <div class="section-reg">
+          <!-- RESTRUCTURED ROW FOR ALIGNMENT -->
+          <div class="row align-items-center">
+            <!-- NEW: This column aligns with the Item List above -->
+            <div class="col-lg-5">
+              <div class="row align-items-center">
+                <!-- Item Count -->
+                <div class="col-auto">
+                  <div class="item-count-box">
+                    <span class="item-count-number">0</span>
+                    <span class="item-count-label">Items</span>
+                  </div>
+                </div>
+                <!-- Totals -->
+                <div class="col">
+                  <div class="totals-grid">
+                    <span>Sub-total</span><span>:</span
+                    ><span class="amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                    <span>Discount</span><span>:</span
+                    ><span class="amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                    <span>Tax</span><span>:</span
+                    ><span class="amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                  </div>
+                </div>
+                <!-- Grand Total -->
+                <div class="col-auto">
+                  <div class="grand-total-section">
+                    <span class="grand-total-label">Grand Total</span>
+                    <span class="grand-total-amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                    <span class="checkout-label">Checkout</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- NEW: This column aligns with Pinned Groups and Keypad -->
+            <div class="col-lg-7">
+              <div class="payment-buttons-container">
+                <button type="button" class="icon-button icon-button-vertical">
+                  <span class="material-symbols-outlined">credit_card</span>
+                  <span class="label">Card</span>
+                </button>
+                <div class="cash-denominations">
+                  <button type="button" class="btn cash-button">$5</button>
+                  <button type="button" class="btn cash-button">$10</button>
+                  <button type="button" class="btn cash-button">$20</button>
+                  <button type="button" class="btn cash-button">$50</button>
+                  <button type="button" class="btn cash-button">$100</button>
+                </div>
+                <button type="button" class="btn exact-cash-button">
+                  Exact
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer-container">
+        <div
+          class="d-flex justify-content-between align-items-center p-2 bg-light"
+        >
+          <!-- Left buttons -->
+          <div>
+            <button type="button" class="icon-button icon-button-horizontal">
+              <span class="material-symbols-outlined">receipt</span>
+              <span class="label">Last Print</span>
+            </button>
+            <button type="button" class="icon-button icon-button-horizontal">
+              <span class="material-symbols-outlined">receipt_long</span>
+              <span class="label">Reprint</span>
+            </button>
+          </div>
+          <!-- Center buttons -->
+          <div class="text-center">
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">percent</span>
+              <span class="label">Discount</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">price_check</span>
+              <span class="label">Price</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">door_open</span>
+              <span class="label">Drawer</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">18_up_rating</span>
+              <span class="label">Age</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">pause</span>
+              <span class="label">Hold</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">play_arrow</span>
+              <span class="label">Resume</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">cancel</span>
+              <span class="label">Void</span>
+            </button>
+          </div>
+          <!-- Right buttons -->
+          <div>
+            <!-- CORRECTED: Using the same class, just swapped the span order -->
+            <button type="button" class="icon-button icon-button-horizontal">
+              <span class="label">End Shift</span>
+              <span class="material-symbols-outlined">punch_clock</span>
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+      );
+      const tooltipList = [...tooltipTriggerList].map(
+        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+      );
+
+      const dollarSign = "$";
+      document.querySelectorAll(".currency-symbol").forEach((el) => {
+        el.textContent = dollarSign;
+      });
+    </script>
+  </body>
 </html>
