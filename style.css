@@ -112,7 +112,6 @@ body {
 .icon-button:hover {
   background-color: var(--main);
   color: white;
-  transition: all 0.2s ease 0.2s;
   transform: translateY(-12px);
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
 }
