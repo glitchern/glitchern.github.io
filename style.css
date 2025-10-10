@@ -1,11 +1,17 @@
+
+/* =============================== */
+/*         THEME VARIABLES         */
+/* =============================== */
 :root {
-  --main: #a81e33;
-  --lightwhite: #ffffff;
-  --dimgray: #696969;
-  --whitesmoke: #f5f5f5;
+  --main: #a81e33;           /* Main accent color */
+  --lightwhite: #ffffff;     /* Light background */
+  --dimgray: #696969;        /* Dim gray for buttons */
+  --whitesmoke: #f5f5f5;     /* Soft background */
 }
 
-/* --- Screen Layout CSS --- */
+/* =============================== */
+/*        LAYOUT CONTAINERS        */
+/* =============================== */
 html,
 body {
   height: 100%;
@@ -28,14 +34,14 @@ body {
   z-index: 10;
 }
 
-/* MODIFIED: This is now the scrollable content area */
+/* Main content area is scrollable */
 .main-content-scrollable {
   flex-grow: 1; /* Allow main to fill available space */
   overflow-y: auto; /* Allow main content to scroll independently */
   padding: 16px;
 }
 
-/* NEW: Wrapper for the sticky bottom bar */
+/* Sticky bottom bar wrapper */
 .bottom-bar-sticky {
   flex-shrink: 0;
   padding: 0 16px 16px 16px; /* Padding to match the main content */
@@ -46,7 +52,9 @@ body {
   z-index: 10;
 }
 
-.main-content-scrollable .section-reg {
+/* Card-like section styling */
+.main-content-scrollable .section-reg,
+.bottom-bar-sticky .section-reg {
   background: var(--lightwhite);
   padding: 1rem;
   border-radius: 8px;
@@ -54,13 +62,9 @@ body {
   height: 100%;
 }
 
-.bottom-bar-sticky .section-reg {
-  background: var(--lightwhite);
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
+/* =============================== */
+/*         ICON & TOOLTIP          */
+/* =============================== */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 24;
 }
@@ -70,7 +74,10 @@ body {
   --bs-tooltip-color: var(--lightwhite);
 }
 
-/* --- COMPONENT STYLES --- */
+/* =============================== */
+/*         BUTTON STYLES           */
+/* =============================== */
+/* Square icon button (nav, search, etc) */
 .button-icon-square {
   margin: 6px;
   width: 48px;
@@ -95,6 +102,7 @@ body {
   font-size: 2em;
 }
 
+/* General icon button (vertical/horizontal) */
 .icon-button {
   background-color: var(--lightwhite);
   color: var(--main);
@@ -120,6 +128,8 @@ body {
   font-weight: 500;
   line-height: 1;
 }
+
+/* Vertical icon button (footer, payment) */
 .icon-button-vertical {
   flex-direction: column;
   width: 80px;
@@ -131,6 +141,8 @@ body {
   font-size: 2.2em;
   margin-bottom: 4px;
 }
+
+/* Horizontal icon button (footer, payment) */
 .icon-button-horizontal {
   flex-direction: row;
   width: auto;
@@ -143,6 +155,9 @@ body {
   font-size: 2.4em;
 }
 
+/* =============================== */
+/*      SCROLLABLE BUTTON GROUP    */
+/* =============================== */
 .scrollable-btn-container {
   width: 100%;
   overflow-x: auto;
@@ -159,6 +174,7 @@ body {
   flex-wrap: nowrap;
 }
 
+/* Custom radio button styles */
 .btn-outline-custom-radio {
   background-color: var(--dimgray);
   color: var(--whitesmoke);
@@ -181,10 +197,14 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(168, 30, 51, 0.5);
 }
 
-/* --- UPDATED: Bottom Bar Styles --- */
+/* =============================== */
+/*         BOTTOM BAR STYLES       */
+/* =============================== */
 .bottom-bar {
   padding: 0.5rem 1rem;
 }
+
+/* Item count box (bottom bar) */
 .item-count-box {
   background-color: var(--whitesmoke);
   border-radius: 8px;
@@ -209,6 +229,8 @@ body {
   text-transform: uppercase;
   margin-top: 2px;
 }
+
+/* Totals grid (bottom bar) */
 .totals-grid {
   display: grid;
   grid-template-columns: auto min-content 1fr;
@@ -222,7 +244,9 @@ body {
   font-weight: 700;
 }
 
-/* --- UPDATED: Grand Total & Payment Button Styles --- */
+/* =============================== */
+/*   GRAND TOTAL & PAYMENT BUTTONS */
+/* =============================== */
 .grand-total-section {
   display: flex;
   flex-direction: column;
@@ -260,6 +284,7 @@ body {
   font-weight: 500;
 }
 
+/* Payment buttons row */
 .payment-buttons-container {
   display: flex;
   justify-content: space-between;
@@ -299,6 +324,9 @@ body {
   color: var(--whitesmoke);
 }
 
+/* =============================== */
+/*         KEYPAD STYLES           */
+/* =============================== */
 .keypad-number-buttons {
   border-radius: 16px;
 }
