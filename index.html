@@ -393,7 +393,7 @@
           <!-- Column 2: Pinned Groups -->
           <div class="col-lg-4 mb-3 mb-lg-0">
             <div class="section-reg pinned-groups">
-              <h5>Pinned Groups</h5>
+              <!--           <h5>Pinned Groups</h5> -->
               <div class="group-pins-scrollable scrollable-btn-container">
                 <div class="btn-group" role="group">
                   <input
@@ -465,8 +465,70 @@
           <!-- Column 3: Keypad -->
           <div class="col-lg-3 mb-3 mb-lg-0">
             <div class="section-reg keypad">
-              <h5>Keypad</h5>
-              <p>Keypad area...</p>
+              <!--           <h5>Keypad</h5> -->
+              <div id="keypad-container">
+                <div id="keypad-entered-amount">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      aria-label="Amount (to the nearest dollar)"
+                      readonly
+                    />
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+                <div id="keypad-number-input">
+                  <div class="container text-center">
+                    <div class="row keypad-number-buttons">
+                      <div class="col">
+                        <button class="btn">1</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">2</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">3</button>
+                      </div>
+                    </div>
+                    <div class="row keypad-number-buttons">
+                      <div class="col">
+                        <button class="btn">4</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">5</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">6</button>
+                      </div>
+                    </div>
+                    <div class="row keypad-number-buttons">
+                      <div class="col">
+                        <button class="btn">7</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">8</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">9</button>
+                      </div>
+                    </div>
+                    <div class="row keypad-number-buttons">
+                      <div class="col">
+                        <button class="btn">.</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">0</button>
+                      </div>
+                      <div class="col">
+                        <button class="btn">00</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="keypad-bottom-buttons"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -563,7 +625,7 @@
             </button>
             <button type="button" class="icon-button icon-button-vertical">
               <span class="material-symbols-outlined">price_check</span>
-              <span class="label">Price</span>
+              <span class="label">Lookup</span>
             </button>
             <button type="button" class="icon-button icon-button-vertical">
               <span class="material-symbols-outlined">door_open</span>
@@ -584,6 +646,22 @@
             <button type="button" class="icon-button icon-button-vertical">
               <span class="material-symbols-outlined">cancel</span>
               <span class="label">Void</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">money_off</span>
+              <span class="label">Return</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">price_change</span>
+              <span class="label">Change</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">lists</span>
+              <span class="label">Items</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">redeem</span>
+              <span class="label">Gift Card</span>
             </button>
           </div>
           <!-- Right buttons -->
