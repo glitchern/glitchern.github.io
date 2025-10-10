@@ -71,9 +71,9 @@
 
       <!-- RESTRUCTURED: Main content now has a three-column layout -->
       <div class="main-content-scrollable">
-        <div class="row h-100">
+        <div class="row h-100 g-3">
           <!-- Column 1: Item List -->
-          <div class="col-lg-5 mb-3 mb-lg-0">
+          <div class="col-lg-5">
             <div class="section-reg item-list">
               <div class="search-field row g-3 align-items-center mb-3">
                 <div class="col-sm-6 col-md-4">
@@ -116,9 +116,8 @@
           </div>
 
           <!-- Column 2: Pinned Groups -->
-          <div class="col-lg-4 mb-3 mb-lg-0">
+          <div class="col-lg-4">
             <div class="section-reg pinned-groups">
-              <!--           <h5>Pinned Groups</h5> -->
               <div class="group-pins-scrollable scrollable-btn-container">
                 <div class="btn-group" role="group">
                   <input
@@ -182,99 +181,63 @@
                   <label class="btn btn-outline-custom-radio" for="hbtn-radio6"
                     >Misc</label
                   >
-
-                  <input
-                    type="radio"
-                    class="btn-check"
-                    name="hbtn-radio"
-                    id="hbtn-radio7"
-                    autocomplete="off"
-                  />
-                  <label class="btn btn-outline-custom-radio" for="hbtn-radio7"
-                    >Beverage</label
-                  >
-
-                  <input
-                    type="radio"
-                    class="btn-check"
-                    name="hbtn-radio"
-                    id="hbtn-radio8"
-                    autocomplete="off"
-                  />
-                  <label class="btn btn-outline-custom-radio" for="hbtn-radio8"
-                    >Misc</label
-                  >
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Column 3: Keypad -->
-          <div class="col-lg-3 mb-3 mb-lg-0">
+          <div class="col-lg-3">
             <div class="section-reg keypad">
-              <!--           <h5>Keypad</h5> -->
               <div id="keypad-container">
                 <div id="keypad-entered-amount">
+                  <!-- RESTORED: Functional Keypad Display -->
                   <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
+                    <span class="input-group-text" id="keypad-currency-symbol"
+                      >$</span
+                    >
                     <input
                       type="text"
                       class="form-control"
-                      aria-label="Amount (to the nearest dollar)"
+                      id="keypad-display"
+                      aria-label="Amount"
                       readonly
+                      placeholder="0.00"
                     />
-                    <span class="input-group-text">.00</span>
+                    <button
+                      class="btn btn-outline-secondary"
+                      id="keypad-backspace-button"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined">backspace</span>
+                    </button>
                   </div>
                 </div>
+                <!-- Keypad Buttons -->
                 <div id="keypad-number-input">
-                  <div class="container text-center">
-                    <div class="row keypad-number-buttons">
-                      <div class="col">
-                        <button class="btn">1</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">2</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">3</button>
-                      </div>
+                  <div class="container text-center p-0">
+                    <div class="row keypad-number-buttons g-2">
+                      <div class="col-4"><button class="btn">1</button></div>
+                      <div class="col-4"><button class="btn">2</button></div>
+                      <div class="col-4"><button class="btn">3</button></div>
                     </div>
-                    <div class="row keypad-number-buttons">
-                      <div class="col">
-                        <button class="btn">4</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">5</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">6</button>
-                      </div>
+                    <div class="row keypad-number-buttons g-2 mt-1">
+                      <div class="col-4"><button class="btn">4</button></div>
+                      <div class="col-4"><button class="btn">5</button></div>
+                      <div class="col-4"><button class="btn">6</button></div>
                     </div>
-                    <div class="row keypad-number-buttons">
-                      <div class="col">
-                        <button class="btn">7</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">8</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">9</button>
-                      </div>
+                    <div class="row keypad-number-buttons g-2 mt-1">
+                      <div class="col-4"><button class="btn">7</button></div>
+                      <div class="col-4"><button class="btn">8</button></div>
+                      <div class="col-4"><button class="btn">9</button></div>
                     </div>
-                    <div class="row keypad-number-buttons">
-                      <div class="col">
-                        <button class="btn">.</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">0</button>
-                      </div>
-                      <div class="col">
-                        <button class="btn">00</button>
-                      </div>
+                    <div class="row keypad-number-buttons g-2 mt-1">
+                      <div class="col-4"><button class="btn">.</button></div>
+                      <div class="col-4"><button class="btn">0</button></div>
+                      <div class="col-4"><button class="btn">00</button></div>
                     </div>
                   </div>
                 </div>
-                <div id="keypad-bottom-buttons"></div>
               </div>
             </div>
           </div>
@@ -422,9 +385,17 @@
         </div>
       </footer>
     </div>
+
+    <!-- UPDATED: jQuery Slim CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- UPDATED: Bootstrap 5.3.8 JS CDN -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
 

@@ -1,12 +1,11 @@
-
 /* =============================== */
 /*         THEME VARIABLES         */
 /* =============================== */
 :root {
-  --main: #a81e33;           /* Main accent color */
-  --lightwhite: #ffffff;     /* Light background */
-  --dimgray: #696969;        /* Dim gray for buttons */
-  --whitesmoke: #f5f5f5;     /* Soft background */
+  --main: #a81e33; /* Main accent color */
+  --lightwhite: #ffffff; /* Light background */
+  --dimgray: #696969; /* Dim gray for buttons */
+  --whitesmoke: #f5f5f5; /* Soft background */
 }
 
 /* =============================== */
@@ -109,7 +108,7 @@ body {
   border: none;
   cursor: pointer;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease 0.2s;
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
