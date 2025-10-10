@@ -1,0 +1,320 @@
+:root {
+  --main: #a81e33;
+  --lightwhite: #ffffff;
+  --dimgray: #696969;
+  --whitesmoke: #f5f5f5;
+}
+
+/* --- Screen Layout CSS --- */
+html,
+body {
+  height: 100%;
+  overflow: hidden; /* Prevent body from scrolling */
+  font-family: "Segoe UI", sans-serif;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  background-color: #e9ecef;
+}
+
+.screen > nav {
+  flex-shrink: 0; /* Prevent nav from shrinking */
+  padding: 10px 20px;
+  background-color: var(--lightwhite);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* MODIFIED: This is now the scrollable content area */
+.main-content-scrollable {
+  flex-grow: 1; /* Allow main to fill available space */
+  overflow-y: auto; /* Allow main content to scroll independently */
+  padding: 16px;
+}
+
+/* NEW: Wrapper for the sticky bottom bar */
+.bottom-bar-sticky {
+  flex-shrink: 0;
+  padding: 0 16px 16px 16px; /* Padding to match the main content */
+}
+
+.screen > footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  z-index: 10;
+}
+
+.main-content-scrollable .section-reg {
+  background: var(--lightwhite);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.bottom-bar-sticky .section-reg {
+  background: var(--lightwhite);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 24;
+}
+
+.retailz-tooltip {
+  --bs-tooltip-bg: var(--main);
+  --bs-tooltip-color: var(--lightwhite);
+}
+
+/* --- COMPONENT STYLES --- */
+.button-icon-square {
+  margin: 6px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--whitesmoke);
+  color: var(--main);
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+.button-icon-square:hover {
+  background-color: var(--main);
+  color: white;
+  transform: translateY(-2px);
+}
+.button-icon-square .material-symbols-outlined {
+  font-size: 2em;
+}
+
+.icon-button {
+  background-color: var(--lightwhite);
+  color: var(--main);
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease 1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  margin: 6px;
+}
+.icon-button:hover {
+  background-color: var(--main);
+  color: white;
+  transition: all 0.2s ease 0.2s;
+  transform: translateY(-12px);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.icon-button .label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1;
+}
+.icon-button-vertical {
+  flex-direction: column;
+  width: 80px;
+  height: 70px;
+  border-radius: 12px;
+  padding: 8px;
+}
+.icon-button-vertical .material-symbols-outlined {
+  font-size: 2.2em;
+  margin-bottom: 4px;
+}
+.icon-button-horizontal {
+  flex-direction: row;
+  width: auto;
+  height: 64px;
+  border-radius: 32px;
+  padding: 0 20px;
+  gap: 8px;
+}
+.icon-button-horizontal .material-symbols-outlined {
+  font-size: 2.4em;
+}
+
+.scrollable-btn-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.scrollable-btn-container::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollable-btn-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+.scrollable-btn-container .btn-group {
+  flex-wrap: nowrap;
+}
+
+.btn-outline-custom-radio {
+  background-color: var(--dimgray);
+  color: var(--whitesmoke);
+  border-color: var(--dimgray);
+  transition: all 0.15s ease-in-out;
+}
+.btn.btn-outline-custom-radio:hover {
+  background-color: var(--lightwhite);
+  color: var(--main);
+  border-color: var(--main);
+}
+.btn-check:checked + .btn-outline-custom-radio,
+.btn-outline-custom-radio.active {
+  background-color: var(--main);
+  color: var(--lightwhite);
+  border-color: var(--main);
+  box-shadow: none;
+}
+.btn-check:focus + .btn-outline-custom-radio {
+  box-shadow: 0 0 0 0.25rem rgba(168, 30, 51, 0.5);
+}
+
+/* --- UPDATED: Bottom Bar Styles --- */
+.bottom-bar {
+  padding: 0.5rem 1rem;
+}
+.item-count-box {
+  background-color: var(--whitesmoke);
+  border-radius: 8px;
+  padding: 0.5rem;
+  aspect-ratio: 1 / 1;
+  min-width: 70px; /* Reduced size */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.item-count-number {
+  font-size: 2.2rem; /* Reduced size */
+  font-weight: 700;
+  line-height: 1;
+  color: var(--main);
+}
+.item-count-label {
+  font-size: 0.7rem; /* Reduced size */
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.totals-grid {
+  display: grid;
+  grid-template-columns: auto min-content 1fr;
+  gap: 2px 10px; /* Reduced gap */
+  font-size: 1rem; /* Reduced size */
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+.totals-grid .amount {
+  text-align: right;
+  font-weight: 700;
+}
+
+/* --- UPDATED: Grand Total & Payment Button Styles --- */
+.grand-total-section {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: var(--main);
+  color: var(--lightwhite);
+  border: 2px solid var(--main);
+}
+.grand-total-section:hover {
+  background-color: var(--lightwhite);
+  color: var(--main);
+  border: 2px solid var(--main);
+}
+.grand-total-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #f0f0f0;
+}
+.grand-total-section:hover .grand-total-label {
+  color: #6c757d;
+}
+.grand-total-amount {
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.checkout-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.payment-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.cash-denominations {
+  display: flex;
+  gap: 6px;
+}
+.cash-button {
+  background-color: var(--whitesmoke);
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 50px;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.2s ease;
+}
+.cash-button:hover {
+  background-color: #ddd;
+  border-color: #ccc;
+  transform: translateY(-2px);
+}
+.exact-cash-button {
+  background-color: var(--dimgray);
+  color: var(--whitesmoke);
+  font-weight: 600;
+  height: 70px;
+  padding: 0 20px;
+  border: none;
+  transition: all 0.2s ease;
+}
+.exact-cash-button:hover {
+  background-color: #555;
+  color: var(--whitesmoke);
+}
+
+.keypad-number-buttons {
+  border-radius: 16px;
+}
+
+.keypad-number-buttons div button {
+  background-color: var(--lightwhite);
+  border-radius: 16px;
+  font-family: "Google Sans Code", sans-serif;
+  color: var(--main);
+  text-align: center;
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.keypad-number-buttons div button:hover {
+  background-color: var(--main);
+  color: var(--lightwhite);
+}
