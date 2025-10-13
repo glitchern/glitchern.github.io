@@ -86,29 +86,31 @@
                     placeholder="Item Name/SKU"
                   />
                 </div>
-                <div class="col-auto">
-                  <button
-                    type="button"
-                    class="btn button-icon-square"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="right"
-                    data-bs-custom-class="retailz-tooltip"
-                    data-bs-title="Quick Keys"
-                  >
-                    <span class="material-symbols-outlined">build</span>
-                  </button>
-                </div>
-                <div class="col-auto">
-                  <button
-                    type="button"
-                    class="btn button-icon-square"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="right"
-                    data-bs-custom-class="retailz-tooltip"
-                    data-bs-title="E-Commerce"
-                  >
-                    <span class="material-symbols-outlined">payments</span>
-                  </button>
+                <div class="col-auto row">
+                  <div class="col">
+                    <button
+                      type="button"
+                      class="btn button-icon-square"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-custom-class="retailz-tooltip"
+                      data-bs-title="Quick Keys"
+                    >
+                      <span class="material-symbols-outlined">build</span>
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button
+                      type="button"
+                      class="btn button-icon-square"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-custom-class="retailz-tooltip"
+                      data-bs-title="E-Commerce"
+                    >
+                      <span class="material-symbols-outlined">payments</span>
+                    </button>
+                  </div>
                 </div>
               </div>
               <p>Item list area...</p>
@@ -180,6 +182,26 @@
                   />
                   <label class="btn btn-outline-custom-radio" for="hbtn-radio6"
                     >Misc</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio7"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio7"
+                    >Drinks</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio8"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio8"
+                    >Promo</label
                   >
                 </div>
               </div>
@@ -296,16 +318,33 @@
                   <span class="material-symbols-outlined">credit_card</span>
                   <span class="label">Card</span>
                 </button>
-                <div class="cash-denominations">
-                  <button type="button" class="btn cash-button">$5</button>
-                  <button type="button" class="btn cash-button">$10</button>
-                  <button type="button" class="btn cash-button">$20</button>
-                  <button type="button" class="btn cash-button">$50</button>
-                  <button type="button" class="btn cash-button">$100</button>
+                <div class="row text-center cash-denominations">
+                  <div class="row">
+                    <p class="cash-denominations-label-text">Cash</p>
+                  </div>
+                  <div class="row">
+                    <button type="button" class="col m-1 btn cash-button">
+                      $5
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $10
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $20
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $50
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $100
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button" 
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Exact amount in cash shown in Grand Total"">Exact</button>
+                  </div>
                 </div>
-                <button type="button" class="btn exact-cash-button">
-                  Exact
-                </button>
               </div>
             </div>
           </div>

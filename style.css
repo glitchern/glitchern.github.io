@@ -293,21 +293,30 @@ body {
 }
 .cash-denominations {
   display: flex;
-  gap: 6px;
+  gap: 3px;
 }
 .cash-button {
   background-color: var(--whitesmoke);
   border: 1px solid #ddd;
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   font-weight: 600;
   color: #333;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
 }
 .cash-button:hover {
   background-color: #ddd;
   border-color: #ccc;
   transform: translateY(-2px);
+  /* Cash green hint on corners */
+  box-shadow:
+    0 0 0 4px rgba(0, 200, 83, 0.25) inset,
+    0 0 8px 2px rgba(0, 200, 83, 0.25);
 }
 .exact-cash-button {
   background-color: var(--dimgray);
@@ -366,4 +375,12 @@ body {
   background-color: var(--main);
   color: var(--lightwhite);
   transform: scale(1.05);
+}
+
+
+/* Cash label above denominations */
+.cash-denominations-label-text {
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2px; /* Reduce space below label */
 }
