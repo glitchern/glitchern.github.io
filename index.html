@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cash Register Layout</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link
       rel="stylesheet"
@@ -29,13 +28,17 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="screen" id="cash-register">
-      <nav>
+      <nav class="d-flex justify-content-between mb-3">
         <!-- Nav content stays the same -->
-        <div>
+        <div class="top-left-buttons">
           <button
             type="button"
             class="btn button-icon-square"
@@ -67,6 +70,29 @@
             <span class="material-symbols-outlined">partner_exchange</span>
           </button>
         </div>
+        <!-- Cash Register -->
+        <div class="top-center-text cash-register-brand-register">
+          <div class="mt-3 mb-0 p-1 text-center">
+            <h1 class="mb-0 header-store-name">ABC Store</h1>
+            <p class="mt-0 mb-3 header-cash-register-module">Cash Register</p>
+          </div>
+        </div>
+        <!-- Right buttons -->
+        <div class="top-right-buttons">
+          <button
+            type="button"
+            id="btn-support-hotline"
+            class="btn button-icon-square m-2" 
+            data-bs-toggle="popover" 
+            data-bs-placement="left" 
+            data-bs-custom-class="retailz-popover-red"
+            data-bs-title="Support Hotline" 
+            data-bs-content="Call +1 (000) 000-0000 for support!"
+          >
+            <span class="material-symbols-outlined">support_agent</span>
+          </button>
+        </div>
+
       </nav>
 
       <!-- RESTRUCTURED: Main content now has a three-column layout -->
@@ -218,6 +244,15 @@
                     <span class="input-group-text" id="keypad-currency-symbol"
                       >$</span
                     >
+                    <!-- The amount in dollars, real value. -->
+                    <input
+                      type="hidden"
+                      class="form-control"
+                      id="keypad-real-amount"
+                      aria-label="Amount Number"
+                      readonly
+                    />
+                    <!-- The amount from id#keypad-real-amount but it shows thousand separator (comma) and if the amount of money goes too large, it will shrink to fit that text inside the input field  -->
                     <input
                       type="text"
                       class="form-control"
@@ -357,7 +392,12 @@
         >
           <!-- Left buttons -->
           <div>
-            <button type="button" class="icon-button icon-button-horizontal">
+            <button type="button" class="icon-button icon-button-horizontal "
+            
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      data-bs-custom-class="retailz-tooltip"
+                      data-bs-title="Print the last transaction's receipt">
               <span class="material-symbols-outlined">receipt</span>
               <span class="label">Last Print</span>
             </button>
@@ -367,9 +407,9 @@
             </button>
           </div>
           <!-- Center buttons -->
-          <div class="text-center">
+          <div class="text-center footer-center-buttons">
             <button type="button" class="icon-button icon-button-vertical">
-              <span class="material-symbols-outlined">percent</span>
+              <span class="material-symbols-outlined">percent_discount</span>
               <span class="label">Discount</span>
             </button>
             <button type="button" class="icon-button icon-button-vertical">
@@ -377,7 +417,7 @@
               <span class="label">Lookup</span>
             </button>
             <button type="button" class="icon-button icon-button-vertical">
-              <span class="material-symbols-outlined">door_open</span>
+              <span class="material-symbols-outlined">top_panel_open</span>
               <span class="label">Drawer</span>
             </button>
             <button type="button" class="icon-button icon-button-vertical">
@@ -397,7 +437,7 @@
               <span class="label">Void</span>
             </button>
             <button type="button" class="icon-button icon-button-vertical">
-              <span class="material-symbols-outlined">money_off</span>
+              <span class="material-symbols-outlined">amend</span>
               <span class="label">Return</span>
             </button>
             <button type="button" class="icon-button icon-button-vertical">

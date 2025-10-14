@@ -1,3 +1,6 @@
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
 $(document).ready(function () {
   // Initialize Bootstrap Tooltips
   $('[data-bs-toggle="tooltip"]').tooltip();
@@ -77,4 +80,10 @@ $(document).ready(function () {
       }
     });
   }
+
+  //
+  const supportBtn = $("#btn-support-hotline");
+  $(`#btn-support-hotline`).on(`click`, function() {
+    $(`#btn-support-hotline`).toggleClass("animate__animated animate__heartBeat animate__fast animate__infinite btn-support-hotline-active");
+  });
 });

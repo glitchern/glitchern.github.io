@@ -31,6 +31,22 @@ body {
   background-color: var(--lightwhite);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  position: relative;
+}
+
+.cash-register-brand-register {
+  left: 50%;
+  top: 50%;
+  min-width: 180px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .cash-register-brand-register {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* Main content area is scrollable */
@@ -71,6 +87,22 @@ body {
 .retailz-tooltip {
   --bs-tooltip-bg: var(--main);
   --bs-tooltip-color: var(--lightwhite);
+}
+
+.retailz-popover-red {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: var(--main);
+  --bs-popover-header-bg: var(--main);
+  --bs-popover-header-color: var(--lightwhite);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+}
+
+.header-store-name {
+  font-weight: 800;
+}
+.header-cash-register-module {
+  font-weight: 600;
 }
 
 /* =============================== */
@@ -126,6 +158,11 @@ body {
   font-size: 0.9rem;
   font-weight: 500;
   line-height: 1;
+}
+
+.btn-support-hotline-active {
+  background-color: var(--main);
+  color: white;
 }
 
 /* Vertical icon button (footer, payment) */
@@ -314,8 +351,7 @@ body {
   border-color: #ccc;
   transform: translateY(-2px);
   /* Cash green hint on corners */
-  box-shadow:
-    0 0 0 4px rgba(0, 200, 83, 0.25) inset,
+  box-shadow: 0 0 0 4px rgba(0, 200, 83, 0.25) inset,
     0 0 8px 2px rgba(0, 200, 83, 0.25);
 }
 .exact-cash-button {
@@ -341,6 +377,12 @@ body {
   font-weight: 700;
   font-family: "Google Sans Code", sans-serif;
   color: #333;
+}
+#keypad-currency-symbol {
+  color: rgb(0, 113, 47);
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Google Sans Code", sans-serif;
 }
 #keypad-backspace-button {
   display: flex;
@@ -377,10 +419,13 @@ body {
   transform: scale(1.05);
 }
 
-
 /* Cash label above denominations */
 .cash-denominations-label-text {
   font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 2px; /* Reduce space below label */
+}
+
+.module-selection-screen {
+  flex-direction: column;
 }

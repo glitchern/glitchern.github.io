@@ -1,0 +1,396 @@
+<html>
+    
+    <div class="screen" id="cash-register">
+      <nav>
+        <!-- Nav content stays the same -->
+        <div>
+          <button
+            type="button"
+            class="btn button-icon-square"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Dashboard"
+          >
+            <span class="material-symbols-outlined">dashboard</span>
+          </button>
+          <button
+            type="button"
+            class="btn button-icon-square"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Select a customer"
+          >
+            <span class="material-symbols-outlined">diversity_1</span>
+          </button>
+          <button
+            type="button"
+            class="btn button-icon-square"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Change cashier"
+          >
+            <span class="material-symbols-outlined">partner_exchange</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- RESTRUCTURED: Main content now has a three-column layout -->
+      <div class="main-content-scrollable">
+        <div class="row h-100 g-3">
+          <!-- Column 1: Item List -->
+          <div class="col-lg-5">
+            <div class="section-reg item-list">
+              <div class="search-field row g-3 align-items-center mb-3">
+                <div class="col-sm-6 col-md-4">
+                  <input class="form-control" type="text" placeholder="UPC" />
+                </div>
+                <div class="col-sm-6 col-md-4">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Item Name/SKU"
+                  />
+                </div>
+                <div class="col-auto row">
+                  <div class="col">
+                    <button
+                      type="button"
+                      class="btn button-icon-square"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-custom-class="retailz-tooltip"
+                      data-bs-title="Quick Keys"
+                    >
+                      <span class="material-symbols-outlined">build</span>
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button
+                      type="button"
+                      class="btn button-icon-square"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-custom-class="retailz-tooltip"
+                      data-bs-title="E-Commerce"
+                    >
+                      <span class="material-symbols-outlined">payments</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p>Item list area...</p>
+            </div>
+          </div>
+
+          <!-- Column 2: Pinned Groups -->
+          <div class="col-lg-4">
+            <div class="section-reg pinned-groups">
+              <div class="group-pins-scrollable scrollable-btn-container">
+                <div class="btn-group" role="group">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio1"
+                    autocomplete="off"
+                    checked
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio1"
+                    >Department</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio2"
+                    >Lottery</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio3"
+                    >Grocery</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio4"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio4"
+                    >Liquor</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio5"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio5"
+                    >Tobacco</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio6"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio6"
+                    >Misc</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio7"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio7"
+                    >Drinks</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="hbtn-radio"
+                    id="hbtn-radio8"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-custom-radio" for="hbtn-radio8"
+                    >Promo</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Keypad -->
+          <div class="col-lg-3">
+            <div class="section-reg keypad">
+              <div id="keypad-container">
+                <div id="keypad-entered-amount">
+                  <!-- RESTORED: Functional Keypad Display -->
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="keypad-currency-symbol"
+                      >$</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="keypad-display"
+                      aria-label="Amount"
+                      readonly
+                      placeholder="0.00"
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      id="keypad-backspace-button"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined">backspace</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- Keypad Buttons -->
+                <div id="keypad-number-input">
+                  <div class="container text-center p-0">
+                    <div class="row keypad-number-buttons g-2">
+                      <div class="col-4"><button class="btn">1</button></div>
+                      <div class="col-4"><button class="btn">2</button></div>
+                      <div class="col-4"><button class="btn">3</button></div>
+                    </div>
+                    <div class="row keypad-number-buttons g-2 mt-1">
+                      <div class="col-4"><button class="btn">4</button></div>
+                      <div class="col-4"><button class="btn">5</button></div>
+                      <div class="col-4"><button class="btn">6</button></div>
+                    </div>
+                    <div class="row keypad-number-buttons g-2 mt-1">
+                      <div class="col-4"><button class="btn">7</button></div>
+                      <div class="col-4"><button class="btn">8</button></div>
+                      <div class="col-4"><button class="btn">9</button></div>
+                    </div>
+                    <div class="row keypad-number-buttons g-2 mt-1">
+                      <div class="col-4"><button class="btn">.</button></div>
+                      <div class="col-4"><button class="btn">0</button></div>
+                      <div class="col-4"><button class="btn">00</button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sticky Bottom Bar Wrapper -->
+      <div class="bottom-bar-sticky">
+        <div class="section-reg">
+          <!-- RESTRUCTURED ROW FOR ALIGNMENT -->
+          <div class="row align-items-center">
+            <!-- NEW: This column aligns with the Item List above -->
+            <div class="col-lg-5">
+              <div class="row align-items-center">
+                <!-- Item Count -->
+                <div class="col-auto">
+                  <div class="item-count-box">
+                    <span class="item-count-number">0</span>
+                    <span class="item-count-label">Items</span>
+                  </div>
+                </div>
+                <!-- Totals -->
+                <div class="col">
+                  <div class="totals-grid">
+                    <span>Sub-total</span><span>:</span
+                    ><span class="amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                    <span>Discount</span><span>:</span
+                    ><span class="amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                    <span>Tax</span><span>:</span
+                    ><span class="amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                  </div>
+                </div>
+                <!-- Grand Total -->
+                <div class="col-auto">
+                  <div class="grand-total-section">
+                    <span class="grand-total-label">Grand Total</span>
+                    <span class="grand-total-amount"
+                      ><span class="currency-symbol"></span>0.00</span
+                    >
+                    <span class="checkout-label">Checkout</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- NEW: This column aligns with Pinned Groups and Keypad -->
+            <div class="col-lg-7">
+              <div class="payment-buttons-container">
+                <button type="button" class="icon-button icon-button-vertical">
+                  <span class="material-symbols-outlined">credit_card</span>
+                  <span class="label">Card</span>
+                </button>
+                <div class="row text-center cash-denominations">
+                  <div class="row">
+                    <p class="cash-denominations-label-text">Cash</p>
+                  </div>
+                  <div class="row">
+                    <button type="button" class="col m-1 btn cash-button">
+                      $5
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $10
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $20
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $50
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button">
+                      $100
+                    </button>
+                    <button type="button" class="col m-1 btn cash-button" 
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-custom-class="retailz-tooltip"
+            data-bs-title="Exact amount in cash shown in Grand Total"">Exact</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer-container">
+        <div
+          class="d-flex justify-content-between align-items-center p-2 bg-light"
+        >
+          <!-- Left buttons -->
+          <div>
+            <button type="button" class="icon-button icon-button-horizontal">
+              <span class="material-symbols-outlined">receipt</span>
+              <span class="label">Last Print</span>
+            </button>
+            <button type="button" class="icon-button icon-button-horizontal">
+              <span class="material-symbols-outlined">receipt_long</span>
+              <span class="label">Reprint</span>
+            </button>
+          </div>
+          <!-- Center buttons -->
+          <div class="text-center">
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">percent</span>
+              <span class="label">Discount</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">price_check</span>
+              <span class="label">Lookup</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">door_open</span>
+              <span class="label">Drawer</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">18_up_rating</span>
+              <span class="label">Age</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">pause</span>
+              <span class="label">Hold</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">play_arrow</span>
+              <span class="label">Resume</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">cancel</span>
+              <span class="label">Void</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">money_off</span>
+              <span class="label">Return</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">price_change</span>
+              <span class="label">Change</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">lists</span>
+              <span class="label">Items</span>
+            </button>
+            <button type="button" class="icon-button icon-button-vertical">
+              <span class="material-symbols-outlined">redeem</span>
+              <span class="label">Gift Card</span>
+            </button>
+          </div>
+          <!-- Right buttons -->
+          <div>
+            <!-- CORRECTED: Using the same class, just swapped the span order -->
+            <button type="button" class="icon-button icon-button-horizontal">
+              <span class="label">End Shift</span>
+              <span class="material-symbols-outlined">punch_clock</span>
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+</html>
